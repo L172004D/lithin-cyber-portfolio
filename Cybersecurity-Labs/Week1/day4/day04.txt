@@ -1,0 +1,90 @@
+✅ Cybersecurity 12-week Job Preparation Plan – Day 4
+
+---
+
+Day 4 Focus: Linux File System Navigation & Permissions
+
+---
+
+1. Learning Objectives
+
+* Understand the "Linux directory structure".
+* Learn "basic file & folder commands".
+* Master "permissions (`chmod`, `chown`)" — critical for system security.
+
+---
+
+2. Study Tasks
+
+(a) File System Basics
+
+* Important directories:
+
+  * `/` (root), `/home`, `/etc`, `/bin`, `/var`, `/tmp`, `/root`.
+* Commands:
+
+  ```bash
+  pwd       # current directory
+  ls -l     # list with details
+  cd ..     # go up one level
+  mkdir lab # make folder
+  rmdir lab # remove empty folder
+  ```
+
+(b) File Operations
+
+```bash
+touch file.txt       # create empty file
+cp file1 file2       # copy
+mv file1 newfile     # move/rename
+rm file.txt          # delete
+cat file.txt         # read
+less file.txt        # read (scroll)
+```
+
+(c) Permissions
+
+* Format: `-rwxr-xr--` (owner | group | others).
+* Change permission:
+
+  ```bash
+  chmod 755 script.sh
+  chmod 600 secret.txt
+  ```
+* Change ownership:
+
+  ```bash
+  sudo chown user:group file.txt
+  ```
+
+---
+ 3. Hands-on Task
+
+1. Create a folder `security_lab`.
+2. Inside, create `notes.txt`.
+3. Set permission so **only you can read/write**:
+
+   ```bash
+   chmod 600 notes.txt
+   ```
+4. Verify with:
+
+   ```bash
+   ls -l notes.txt
+   ```
+
+   Should look like:
+
+   ```
+   -rw------- 1 lithin lithin 0 Sep 26  notes.txt
+   
+
+---
+
+4. Security Tip
+
+🔐 Incorrect permissions can leak sensitive files like '/etc/shadow'. Always use "principle of least privilege".
+
+---
+
+
