@@ -1,0 +1,76 @@
+day 03:
+
+🎯 Goals:
+
+Understand basic Linux commands
+
+Learn file & directory management
+
+Get comfortable with permissions
+
+1. Linux File System Basics
+
+/home → user files
+
+/etc → configuration files
+
+/var → logs
+
+/bin & /sbin → system binaries
+
+/tmp → temporary files
+
+pwd        # show current path
+ls -la     # list files with permissions
+cd ..      # move up a directory
+
+Diagram (Linux Permission Model):
+   User (u)   Group (g)   Others (o)
+     rwx        r-x         r--
+   (7)          (5)         (4)
+
+Day 3 – Linux Basics Quiz
+Q1.
+
+Which directory in Linux usually contains log files?
+a) /etc
+b) /bin
+c) /var
+d) /home
+
+Q2.
+
+What does the command pwd do?
+a) Prints who is logged in
+b) Prints working directory path
+c) Changes directory
+d) Prints write permissions
+
+Q3.
+
+If a file has permissions rw-r--r--, who can edit the file?
+a) Only the owner
+b) Owner & group
+c) Everyone
+d) No one
+
+Q4.
+
+Which command is used to change file permissions in Linux?
+a) chmod
+b) chuser
+c) chperm
+d) ls -l
+
+Q5.
+
+You run:
+
+echo "Hello" > file1.txt
+
+
+What happens?
+a) Appends “Hello” to file1.txt
+b) Overwrites file1.txt with “Hello”
+c) Creates a directory called Hello
+d) Displays Hello on screen only
