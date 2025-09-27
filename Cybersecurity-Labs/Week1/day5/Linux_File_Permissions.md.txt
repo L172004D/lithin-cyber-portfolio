@@ -1,0 +1,311 @@
+1 Linux_File_Permissions.md
+
+> A concise GitHub-ready note that explains Linux file permissions (rwx), numeric vs symbolic `chmod`, `chown` / `chgrp`, special bits (SetUID / SetGID / sticky), worked examples with commands + sample outputs, and step-by-step instructions to commit & push this file to a repo.
+
+---
+ Table of contents
+
+1. Quick overview
+2. Permission string (`ls -l`) — `rwx` explained
+3. Numeric (octal) mode for `chmod`
+4. Symbolic mode for `chmod`
+5. `chown` and `chgrp`
+6. Special permission bits: SetUID, SetGID, sticky
+7. Examples (commands + sample outputs)
+8. Mini hands-on exercises
+9. Commit & push this note to GitHub (step-by-step)
+
+---
+
+ 1) Quick overview
+
+Linux permissions control read, write and execute access for three categories: **owner (user)**, **group**, and **others**. Use `ls -l` to view permissions and `chmod`, `chown`, `chgrp` to change them.
+
+---
+
+ 2) Permission string (`ls -l`) — `rwx` explained
+
+Typical `ls -l` output:
+
+```
+$ ls -l file.txt
+-rw-r--r-- 1 user group 123 Sep 27 12:34 file.txt
+```
+
+Breakdown of the first column (`-rw-r--r--`):
+
+```
+ 1 2 3 4 5 6 7 8 9 10
+ - r w - r - - r - -
+ ^ file type ("-" regular file, "d" directory, "l" symlink)
+ positions 2-4: owner (user) permissions
+ positions 5-7: group permissions
+ positions 8-10: others (world) permissions
+```
+
+| Symbol | Meaning                    |
+| ------ | -------------------------- |
+| `r`    | read                       |
+| `w`    | write                      |
+| `x`    | execute (or `-` if absent) |
+
+So `-rw-r--r--` means: owner can read & write; group and others can only read.
+
+---
+
+ 3) Numeric (octal) mode for `chmod`
+
+Each `r`, `w`, `x` maps to a number: `r=4`, `w=2`, `x=1`. Add values to get each triad.
+
+ `7 = 4+2+1 = rwx`
+ `6 = 4+2 = rw-`
+ `5 = 4+1 = r-x`
+ `4 = 4 = r--`
+
+Format: `chmod XYZ file` where `X` = owner, `Y` = group, `Z` = others.
+
+Examples:
+
+ `chmod 755 file` → owner `rwx` (7), group `r-x` (5), others `r-x` (5)
+ `chmod 644 file` → owner `rw-` (6), group `r--` (4), others `r--` (4)
+
+---
+
+ 4) Symbolic mode for `chmod`
+
+Structure: `[ugoa][+-=][rwx]` where:
+
+ `u` = user (owner)
+ `g` = group
+ `o` = others
+ `a` = all (u,g,o)
+ `+` add permission, `-` remove, `=` set exactly
+
+Examples:
+
+ `chmod u+x script.sh` → add execute to owner
+ `chmod g-w file` → remove write permission from group
+ `chmod a=r file` → set read-only for all (owner, group, others)
+
+You can combine: `chmod u=rwx,g=rx,o=r file` or `chmod ug+w file`
+
+---
+
+ 5) `chown` and `chgrp`
+
+ `chown` changes the **owner** of a file/directory.
+
+  ```bash
+  sudo chown alice file.txt
+  ```
+ `chgrp` changes the **group** of a file/directory.
+
+  ```bash
+  sudo chgrp devs file.txt
+  ```
+ `chown` can change both owner and group:
+
+  ```bash
+  sudo chown alice:devs file.txt
+  ```
+
+After changing, verify with `ls -l`.
+
+---
+
+ 6) Special permission bits: SetUID, SetGID, sticky
+
+SetUID (set user ID on execution)**: when set on an executable, the process runs with the file owner's privileges. Represented by an `s` in owner's execute position.
+
+   Numeric prefix `4` (e.g., `chmod 4755 program`)
+   Example permission string: `-rwsr-xr-x` (note `s` in place of `x` for user)
+
+SetGID (set group ID on execution / inheritance): when set on an executable, process runs with the file's group; when set on a "directory", new files inherit the directory's group. Represented by `s` in group execute position.
+
+   Numeric prefix `2` (e.g., `chmod 2755 dir`)
+   Example on directory: `drwxr-sr-x`
+
+Sticky bit: commonly used on temporary directories like `/tmp`. It prevents users from deleting files they don't own even if the directory is writable by all. Represented by `t` in others execute position.
+
+   Numeric prefix `1` (e.g., `chmod 1777 /tmp`)
+   Example: `drwxrwxrwt`
+
+Security notes:
+
+ Avoid making scripts setuid — this can be dangerous. SetUID is appropriate for well-audited binaries only.
+ Use SetGID on shared project directories to keep group ownership consistent.
+ Sticky bit is important on world-writable dirs to prevent users from removing others' files.
+
+---
+
+ 7) Examples (commands + sample outputs)
+
+> These sample outputs are illustrative. Your username/group and timestamps will differ.
+
+Create files for demo
+
+```bash
+$ touch file.txt script.sh
+$ echo -e "#!/bin/bash\necho hello" > script.sh
+$ ls -l file.txt script.sh
+-rw-r--r-- 1 user group 0 Sep 27 12:00 file.txt
+-rw-r--r-- 1 user group 18 Sep 27 12:00 script.sh
+```
+
+Make script executable (symbolic)
+
+```bash
+$ chmod u+x script.sh
+$ ls -l script.sh
+-rwxr--r-- 1 user group 18 Sep 27 12:00 script.sh
+```
+
+Numeric mode: 755
+
+```bash
+$ chmod 755 script.sh
+$ ls -l script.sh
+-rwxr-xr-x 1 user group 18 Sep 27 12:01 script.sh
+```
+
+chown & chgrp
+
+```bash
+$ sudo chown alice script.sh
+$ sudo chgrp devs script.sh
+$ ls -l script.sh
+-rwxr-xr-x 1 alice devs 18 Sep 27 12:02 script.sh
+```
+
+SetUID example (dangerous — demo only)
+
+```bash
+$ sudo cp /bin/ls ./ls_demo
+$ sudo chmod 4755 ls_demo
+$ ls -l ls_demo
+-rwsr-xr-x 1 root root 123K Sep 27 12:03 ls_demo
+```
+
+Now `ls_demo` runs with the owner's privileges (root in this example). Be cautious.
+
+SetGID on directory
+
+```bash
+$ mkdir shared_dir
+$ sudo chgrp devs shared_dir
+$ sudo chmod 2775 shared_dir
+$ ls -ld shared_dir
+drwxrwsr-x 2 user devs 4096 Sep 27 12:04 shared_dir
+```
+
+Files created inside `shared_dir` will inherit the `devs` group.
+
+Sticky bit on /tmp-like dir:
+
+```bash
+$ mkdir public_tmp
+$ sudo chmod 1777 public_tmp
+$ ls -ld public_tmp
+drwxrwxrwt 2 user group 4096 Sep 27 12:05 public_tmp
+```
+
+The trailing `t` means the sticky bit is set.
+
+---
+
+ 8) Mini hands-on exercises (try these)
+
+1. Create `testfile` and set permissions so "only owner can read & write":
+
+   ```bash
+   touch testfile
+   chmod 600 testfile
+   ls -l testfile   # expect -rw-------
+   ```
+2. Make `myscript.sh` executable by owner and group, but not others:
+
+   ```bash
+   chmod 750 myscript.sh
+   ls -l myscript.sh  # expect -rwxr-x---
+   ```
+3. Make a shared directory where new files inherit the group's ownership:
+
+   ```bash
+   mkdir proj
+   sudo chgrp devs proj
+   sudo chmod 2775 proj
+   ls -ld proj  # expect drwxrwsr-x
+   ```
+4. Create a world-writable directory with sticky bit and test deletion behavior.
+
+---
+
+ 9) Commit & push this note to GitHub (step-by-step)
+
+Follow these steps 'inside your local repository folder'.
+
+ A. If you already have a Git repo and remote set up
+
+1. Open terminal (PowerShell, Git Bash, or WSL) and `cd` to your repo root:
+
+   ```powershell
+   cd C:\path\to\your\repo
+   ```
+
+2. Create or update the file `Linux_File_Permissions.md` (paste the content of this note into it). You can use an editor:
+
+    VS Code: `code Linux_File_Permissions.md` (or open the folder and create file)
+    Notepad (Windows): `notepad Linux_File_Permissions.md`
+
+3. Check git status, stage, commit and push:
+
+   ```bash
+   git status
+   git add Linux_File_Permissions.md
+   git commit -m "docs: add Linux file permissions note"
+   git push origin main
+   ```
+
+    If your default branch is `master`, replace `main` with `master`.
+
+ B. If you haven't created a remote on GitHub yet
+
+1. Create a repository on GitHub (e.g., `lithin-cyber-portfolio`) via the GitHub UI.
+2. Then in your local repo:
+
+   ```bash
+   git remote add origin https://github.com/<your-username>/<your-repo>.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+ C. Quick checks & troubleshooting
+
+ Check the remote URL:
+
+  ```bash
+  git remote -v
+  ```
+ Set your Git identity if you haven't:
+
+  ```bash
+  git config --global user.name "Your Name"
+  git config --global user.email "you@example.com"
+  ```
+ If push is rejected due to newer remote commits, pull first:
+
+  ```bash
+  git pull --rebase origin main
+  git push origin main
+  ```
+
+---
+
+ Final notes
+
+ Keep this file as `docs` or `notes` in your repo so it can help during interviews and quick revision.
+ Be cautious when experimenting with `SetUID`/`SetGID` on production systems.
+
+---
+
+"End of Linux_File_Permissions.md"
