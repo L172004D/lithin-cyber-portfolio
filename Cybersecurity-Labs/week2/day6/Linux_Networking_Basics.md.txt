@@ -1,0 +1,50 @@
+
+ 🗓️ Day 06 – Linux Networking Fundamentals
+
+Explored essential Linux networking commands such as `ping`, `traceroute`, `ifconfig`, and `netstat` to understand how systems communicate over networks. Practiced DNS lookups using `nslookup` and `dig`, analyzed routing tables, and configured system hostname and DNS settings. This day built a strong foundation for upcoming network monitoring and packet analysis tasks.
+
+
+ 🔹 Key Networking Commands
+
+| Command | Description | Example |
+|----------|--------------|----------|
+| `ifconfig` / `ip a` | Displays all network interfaces and IP addresses | `ip a` |
+| `ping` | Tests connectivity between systems | `ping google.com` |
+| `traceroute` | Displays the route packets take to reach a host | `traceroute google.com` |
+| `netstat` | Shows active network connections and listening ports | `netstat -tuln` |
+| `ss` | Modern alternative to netstat, faster and more detailed | `ss -tuln` |
+| `nslookup` | Queries DNS servers to obtain domain details | `nslookup google.com` |
+| `dig` | Performs detailed DNS lookups | `dig google.com` |
+| `ip route show` | Displays routing table and default gateway | `ip route show` |
+| `hostnamectl` | Manages system hostname | `sudo hostnamectl set-hostname testmachine` |
+| `cat /etc/resolv.conf` | Displays DNS server configuration | `cat /etc/resolv.conf` |
+
+---
+
+ ⚙️ Practice Tasks
+1. Run each command in your Linux terminal and record the output.  
+2. Observe how `ping` and `traceroute` work differently to test connectivity.  
+3. Check your DNS resolution using `nslookup` and `dig`.  
+4. Change your system hostname and verify using `hostnamectl`.  
+
+---
+
+ 📁 Folder Structure
+```
+
+Cybersecurity-Labs/
+└── Week2/
+└── day06_LinuxNetworking/
+├── Linux_Networking_Basics.md
+├── screenshots/
+└── README.md
+
+```
+
+---
+
+ 🧩 Reflection
+- Learned how to view, test, and analyze network connections on Linux.  
+- Understood DNS, routing, and IP configuration commands.  
+- Gained foundational skills for tools like **Wireshark** and **tcpdump** used in network forensics.
+
