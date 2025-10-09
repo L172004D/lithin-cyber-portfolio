@@ -1,0 +1,164 @@
+🌐 Network Diagnostic Report
+Author: Lithin Kumar  
+Date: [09/10/2025]  
+Objective: Analyze system network configuration, DNS resolution, and packet routing.
+
+---
+
+🧰 Tools Used
+- "ipconfig / ifconfig" – View system IP details  
+- "ping" – Test network connectivity  
+- "tracert / traceroute" – Trace packet route  
+- "nslookup" – Resolve domain to IP  
+
+---
+1. IP Configuration
+
+Command:  "ipconfig"
+Output:
+Windows IP Configuration
+
+
+Ethernet adapter Ethernet 2:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . : fe80::1cc6:893:1143:c8a6%4
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . :
+
+Wireless LAN adapter Local Area Connection* 1:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+
+Wireless LAN adapter Local Area Connection* 10:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+
+Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . :
+   IPv6 Address. . . . . . . . . . . : 2409:408d:3cb7:41b2:89a7:8155:4e15:afff
+   Temporary IPv6 Address. . . . . . : 2409:408d:3cb7:41b2:9415:8853:2993:f2f
+   Link-local IPv6 Address . . . . . : fe80::bbf3:ab1a:397:f16c%18
+   IPv4 Address. . . . . . . . . . . : 10.186.49.171
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : fe80::8825:f8ff:fe15:a4a2%18
+                                       10.186.49.156
+
+
+Explanation:
+This displays network interface details such as IPv4 address, default gateway, and DNS server.
+It helps identify your system’s internal network setup.
+
+
+2.Connectivity Test
+
+Command: "ping google.com"
+
+
+Output:
+Pinging gooogle.com [2404:6800:4007:83b::2004] with 32 bytes of data:
+Reply from 2404:6800:4007:83b::2004: time=75ms
+Reply from 2404:6800:4007:83b::2004: time=87ms
+Reply from 2404:6800:4007:83b::2004: time=76ms
+Reply from 2404:6800:4007:83b::2004: time=85ms
+
+Ping statistics for 2404:6800:4007:83b::2004:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 75ms, Maximum = 87ms, Average = 80ms
+
+
+Explanation:
+ping checks reachability to Google’s server.
+Low response time indicates a strong and stable internet connection
+
+3.Route Tracing
+
+Command: "tracert google.com"
+
+
+Output:
+Tracing route to google.com [2404:6800:4007:815::200e]
+over a maximum of 30 hops:
+
+  1     5 ms     3 ms     5 ms  2409:408d:3cb7:41b2::2f
+  2     *        *        *     Request timed out.
+  3    83 ms    72 ms    81 ms  2405:200:369:eeee:20::1366
+  4    62 ms    79 ms    68 ms  2405:200:801:2300::52c
+  5    83 ms    71 ms    74 ms  2405:200:801:2300::52d
+  6    91 ms    73 ms    65 ms  2405:200:801:2300::499
+  7   100 ms    77 ms    81 ms  2404:6800:8201:40::1
+  8    91 ms    74 ms    74 ms  2404:6800:8201:40::1
+  9    67 ms    68 ms    81 ms  2404:6800:8201:40::1
+ 10  1059 ms    95 ms    77 ms  2001:4860:0:1::55aa
+ 11    90 ms    88 ms   164 ms  2001:4860:0:1::55cf
+ 12    84 ms    86 ms    81 ms  maa05s14-in-x0e.1e100.net [2404:6800:4007:815::200e]
+
+Trace complete.
+
+
+Explanation:
+This reveals each network hop between your system and Google’s server, helping diagnose latency or routing issues.
+
+4.DNS Resolution
+
+Command:"nslookup google.com"
+
+
+Output:
+Server:  UnKnown
+Address:  10.186.49.156
+
+Non-authoritative answer:
+Name:    google.com
+Addresses:  2404:6800:4007:815::200e
+          142.250.77.110
+
+
+
+Explanation:
+This shows which DNS server resolves “google.com” and returns its corresponding IP address.
+
+5. Data Flow Diagram:
+
+sequenceDiagram
+    participant PC as Your System
+    participant Router as Local Router
+    participant ISP as Internet Service Provider
+    participant DNS as DNS Server
+    participant Google as Google.com Server
+
+    PC->>Router: Sends DNS Query (google.com)
+    Router->>ISP: Forwards request
+    ISP->>DNS: Requests IP for google.com
+    DNS-->>ISP: Returns IP Address
+    ISP-->>Router: Forwards IP info
+    Router-->>PC: IP Address Received
+    PC->>Google: Sends HTTP/HTTPS Request
+    Google-->>PC: Returns Webpage Data
+
+Step 6: "Push to GitHub"
+
+Run these commands inside your project folder:
+bash:
+git add .
+git commit -m "Added Day 7 Network Diagnostic Report"
+git push origin main
+
+Summary :
+
+Through this report, we:
+
+Identified network configuration details
+
+Tested connectivity using ICMP (ping)
+
+Traced data routes to external servers
+
+Understood how DNS translates domain names into IP addresses
+
+This mini project provides a practical foundation for network troubleshooting and packet analysis, essential skills in cybersecurity.

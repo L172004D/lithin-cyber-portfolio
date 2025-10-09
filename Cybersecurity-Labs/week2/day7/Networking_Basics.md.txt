@@ -1,0 +1,81 @@
+ 🌐 Day 07 – Network Fundamentals for Cybersecurity
+
+ 🎯 Objective
+Today’s focus is to build a solid understanding of "computer networking", "including the "OSI and TCP/IP models", "common network protocols", and "port numbers" that form the backbone of communication across the internet.  
+These concepts are essential for mastering cybersecurity tools like "Wireshark", "Nmap", and "Burp Suite".
+
+
+
+ 🧩 OSI vs TCP/IP Model – Comparison
+
+| OSI Layer | Function | Example Protocols | Equivalent TCP/IP Layer |
+|----------------|--------------|------------------------|------------------------------|
+| 7. Application | User interaction and network services | HTTP, FTP, DNS | Application |
+| 6. Presentation | Data translation, encryption, compression | SSL, TLS, JPEG | Application |
+| 5. Session | Connection management between applications | NetBIOS, PPTP | Application |
+| 4. Transport | Reliable data transmission and flow control | TCP, UDP | Transport |
+| 3. Network | Logical addressing and routing | IP, ICMP, ARP | Internet |
+| 2. Data Link | Physical addressing (MAC) and framing | Ethernet, PPP | Network Access |
+| 1. Physical | Hardware, signals, cables, and transmission media | NIC, Hubs, Wi-Fi | Network Access |
+
+🧠 Insight:  
+While the "OSI model" is theoretical, the "TCP/IP model" is practical and used in real-world networking. Understanding both helps map how data travels from one device to another securely.
+
+---
+
+ 🌍 Top 10 Common Network Protocols
+
+| Protocol | Full Form | Purpose / Use Case |
+|---------------|----------------|--------------------------|
+| "HTTP" | HyperText Transfer Protocol | Transfers web pages (unencrypted) |
+| "HTTPS" | HTTP Secure | Encrypted web communication using SSL/TLS |
+| "FTP" | File Transfer Protocol | Transfers files between systems |
+| "SSH" | Secure Shell | Secure remote administration and access |
+| "DNS" | Domain Name System | Resolves domain names to IP addresses |
+| "DHCP" | Dynamic Host Configuration Protocol | Automatically assigns IP addresses |
+| "SMTP" | Simple Mail Transfer Protocol | Sends emails across networks |
+| "POP3 / IMAP" | Post Office / Internet Message Access Protocol | Retrieves and manages emails |
+| "SNMP" | Simple Network Management Protocol | Monitors and manages network devices |
+| "ICMP" | Internet Control Message Protocol | Sends diagnostic and error messages (used by ping) |
+
+💡 Tip: Understanding these protocols helps in packet analysis, intrusion detection, and network troubleshooting.
+
+---
+
+ 🔢 Essential Port Numbers
+
+| Port | Protocol / Service | Description |
+|-----------|------------------------|-----------------|
+| 20, 21 | FTP | File Transfer Protocol (Data & Control) |
+| 22 | SSH | Secure remote login |
+| 23 | Telnet | Unsecured remote access |
+| 25 | SMTP | Mail sending service |
+| 53 | DNS | Domain name resolution |
+| 67/68 | DHCP | Dynamic IP allocation |
+| 80 | HTTP | Standard web traffic |
+| 110 | POP3 | Email retrieval |
+| 143 | IMAP | Email access |
+| 443 | HTTPS | Secure web traffic |
+| 3389 | RDP | Remote Desktop Protocol |
+| 8080 | Alternate HTTP | Used for proxies or local testing |
+
+📘 Note:  
+Cybersecurity professionals memorize these ports to recognize open or vulnerable services during "network scanning" and "penetration testing".
+
+---
+
+ 📊 Network Data Flow (Packet Transmission)
+
+mermaid
+sequenceDiagram
+    participant User as User (Your PC)
+    participant Router as Router / Gateway
+    participant ISP as Internet Service Provider
+    participant Server as Web Server (e.g., google.com)
+
+    User->>Router: Sends HTTP/HTTPS request
+    Router->>ISP: Forwards data packets
+    ISP->>Server: Routes request over the internet
+    Server-->>ISP: Sends response packets
+    ISP-->>Router: Returns data to gateway
+    Router-->>User: Displays webpage or content
