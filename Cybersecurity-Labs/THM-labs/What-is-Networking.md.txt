@@ -1,0 +1,19 @@
+# What is Networking? — TryHackMe writeup
+Room: What is Networking?  
+Date completed: 2025-10-09  
+Level: Easy / Free
+
+## Executive summary
+Short intro to core networking concepts (hosts, IP addressing, ports, protocols). Built familiarity with TCP/UDP basics necessary for recon and scanning.
+
+## Tools / commands used
+- N/A (conceptual room)  
+- Notes taken: OSI vs TCP/IP, common ports (80,443,22,21), IP classes, subnet basics.
+
+## Key takeaways
+- Difference between TCP (connection-oriented) and UDP (connectionless).  
+- Ports identify services; enumeration targets those ports.  
+- Basic subnetting idea (host vs network address).
+
+## Next steps
+- Do **Nmap room and **Network Fundamentals** practical labs to apply these concepts.

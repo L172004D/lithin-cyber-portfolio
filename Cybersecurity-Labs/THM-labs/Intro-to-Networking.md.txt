@@ -1,0 +1,22 @@
+# Intro to Networking — TryHackMe writeup
+Room: Intro to Networking  
+Date completed: 2025-10-09 (today)  
+Level: Free / Beginner
+
+## Executive summary
+Hands-on intro to packets, addresses, and basic network troubleshooting. Covered how to identify host IPs and basic packet flow.
+
+## Commands / exercises completed
+- Reviewed IP addressing and ping/traceroute concepts (theory).  
+- Performed guided examples in the THM terminal (followed step prompts).  
+- Took screenshots of key steps (add in `proofs/`).
+
+## Evidence
+- [Add screenshots here — `THM-Labs/Intro-to-Networking/proofs/`]  
+
+## Learnings
+- How to reason about connectivity problems and what to check first (routing, firewall, DNS).  
+- Now ready for Nmap and Wireshark practical exercises.
+
+## Next steps
+- Complete **Nmap** room and capture a small pcap to analyze with Wireshark.
