@@ -1,0 +1,56 @@
+🧾 Wireshark Traffic Analysis Report  
+Day 8 – Cybersecurity Internship Fast-Track Plan
+
+---
+
+🎯 Objective
+The objective of this lab was to capture, analyze, and interpret network traffic using "Wireshark" to understand how data packets flow across a network and identify any suspicious or abnormal activity.
+
+---
+
+🧰 Tools Used
+- Operating System: Kali Linux / Windows  
+- Tool: Wireshark (Network Protocol Analyzer)  
+- File Format: `.pcapng`  
+- Network Interface: Ethernet / Wi-Fi (as per active connection)
+
+---
+
+ ⚙️ Commands / Filters Applied
+| Purpose | Filter / Command |
+|----------|------------------|
+| Capture HTTP traffic | `http` |
+| Filter by source IP | `ip.src == <your_IP>` |
+| Filter by destination IP | `ip.dst == <target_IP>` |
+| Display TCP traffic only | `tcp` |
+| Capture DNS queries | `dns` |
+| Show HTTPS traffic | `tcp.port == 443` |
+| Find packets with errors | `tcp.analysis.flags` |
+
+---
+
+ 🔍 Key Observations
+- Detected multiple "TCP and DNS packets" between local and remote hosts.  
+- Observed "HTTP GET and POST requests", confirming web activity.  
+- Identified "source and destination IPs", showing packet routing paths.  
+- Found some "retransmissions" indicating minor network congestion.  
+- No signs of malicious payloads or unusual port activity were detected in this session.
+
+---
+
+ ! Screenshot of Wireshark Window
+> *(Insert your captured screenshot below)*  
+> Example:  
+> ![Wireshark Screenshot](./Wireshark_Traffic_Analysis.png)
+
+---
+
+ 🧩 Conclusion
+Through this analysis, I gained hands-on experience with "packet capturing, protocol filtering, and traffic inspection" using Wireshark.  
+This activity helped improve my understanding of "network communication patterns", "protocol structures", and "basic forensic analysis" in cybersecurity.
+
+---
+
+Author: Lithin Kumar  
+Date: "Day 8 – Cybersecurity Internship Fast-Track Plan"  
+Repository: [lithin-cyber-portfolio](https://github.com/L172004D/lithin-cyber-portfolio)
