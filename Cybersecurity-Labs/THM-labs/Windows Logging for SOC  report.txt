@@ -1,0 +1,52 @@
+ 🪟 Windows Logging for SOC — TryHackMe Completion
+
+![Windows Logging for SOC](https://user-images.githubusercontent.com/your-github-id/your-image.png)
+
+ 🎯 Objective
+The goal of this lab was to understand how "Windows logging" works and how logs can be utilized by a "Security Operations Center (SOC)" to detect, analyze, and respond to security incidents effectively.
+
+---
+
+ 📘 Overview
+This TryHackMe walkthrough room focuses on configuring, analyzing, and understanding Windows event logs that are critical for SOC analysts.  
+It helps learners detect abnormal activities such as failed logins, privilege escalations, and system changes.
+
+---
+
+ 🔍 Topics Covered
+- Introduction to "Windows Event Viewer"
+- Understanding "Windows Event Logs" (Security, System, Application)
+- Monitoring "Event IDs" such as:
+  - `4624` – Successful Login  
+  - `4625` – Failed Login  
+  - `4720` – User Account Creation  
+- Configuring "Log Forwarding" for SOC visibility
+- Setting up "Scheduled Tasks" for security alerts
+- Using logs for "Incident Detection and Analysis"
+
+---
+
+ 🧠 Skills Gained
+- Windows Log Analysis  
+- Threat Detection via Event IDs  
+- Basic Incident Response Understanding  
+- SOC Monitoring Fundamentals  
+- Hands-on Experience with TryHackMe Labs
+
+---
+
+ 🧩 Room Details
+| Field | Details |
+|-------|----------|
+| Platform | TryHackMe |
+| Room Name | Windows Logging for SOC |
+| Type | Walkthrough |
+| Difficulty | Easy |
+| Tasks Completed | 8 |
+| Points Earned | 128 |
+
+---
+
+ 🧾 Achievement
+🎉 Successfully completed "Windows Logging for SOC" room on TryHackMe.  
+This strengthened my abi
