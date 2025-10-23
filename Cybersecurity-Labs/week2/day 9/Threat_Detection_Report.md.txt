@@ -1,0 +1,23 @@
+ Threat Detection Report
+
+Date:23/10/2024 
+Analyst:LITHIN KUMAR M
+
+ 1. Objective
+To identify and analyze suspicious login or system events.
+
+ 2. Tools Used
+- Windows Event Viewer / TryHackMe
+- Filters: Event ID 4625, 4720
+
+ 3. Observations
+- Multiple failed login attempts from 192.168.7.101
+- Suspicious user account "admin123" created unexpectedly.
+
+ 4. Conclusion
+The activity indicates a possible brute-force attempt followed by privilege escalation.
+
+ 5. Recommendations
+- Implement account lockout policy.
+- Enforce strong password policy.
+- Review admin account creation rights.
