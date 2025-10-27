@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lithin Kumar | Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>⚡ Lithin Kumar</h1>
+    <p>Cybersecurity Enthusiast | Network Analyst | Ethical Hacking Learner</p>
+    <div class="social-links">
+      <a href="https://github.com/L172004D" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/lithinkumarm" target="_blank">LinkedIn</a>
+      <a href="https://tryhackme.com/p/LITHINKUMAR" target="_blank">TryHackMe</a>
+      <a href="mailto:lithinkumarofficial@gmail.com">Email</a>
+      <a href="Lithin_Kumar_Cybersecurity_Resume.pdf" download>📄 Download My Resume</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate cybersecurity enthusiast with hands-on experience in network analysis,
+      ethical hacking, and system security. Through practical tasks like firewall setup, Wireshark analysis,
+      and penetration testing, I’ve built a strong foundation in securing digital environments.
+      I’m currently pursuing cybersecurity internships and continuously learning through TryHackMe
+      and real-world simulations.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>Network Analysis (Wireshark, Nmap)</li>
+      <li>Vulnerability Scanning & Reporting</li>
+      <li>Firewall Configuration (Windows/Linux)</li>
+      <li>Incident Response & Threat Detection</li>
+      <li>Linux, Python, Git & GitHub</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Highlighted Projects</h2>
+    <div class="project">
+      <h3>🔹 Wireshark Traffic Analysis</h3>
+      <p>Captured and analyzed live network packets using Wireshark to detect suspicious activities.</p>
+      <a href="https://github.com/L172004D/lithin-cyber-portfolio/tree/main/day5" target="_blank">View Project</a>
+    </div>
+
+    <div class="project">
+      <h3>🔹 Firewall Setup & Rule Testing</h3>
+      <p>Configured firewall rules on Windows/Linux systems to secure network access.</p>
+      <a href="https://github.com/L172004D" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>🔹 Cybersecurity Internship Docs</h3>
+      <p>Hands-on internship tasks including vulnerability analysis, traffic capture, and ethical hacking reports.</p>
+      <a href="https://github.com/L172004D/lithin-cyber-portfolio" target="_blank">View Internship Work</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Let’s connect and collaborate on cybersecurity projects!</p>
+    <p>📧 <a href="mailto:lithinkumarofficial@gmail.com">lithinkumarofficial@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Lithin Kumar | Built with 💻 passion for cybersecurity</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
